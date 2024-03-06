@@ -1,0 +1,103 @@
+name: magento246 #change it, name = project URL
+recipe: lemp
+config:
+  webroot: www
+  php: '8.1'
+  #database: mariadb:10.4
+  database: mysql:8.0.29
+  xdebug: 'false'
+  composer_version: '2.1.7'
+  config:
+    php: config/php.ini
+    vhosts: config/nginx.conf
+
+proxy:
+  mailhog:
+    - mailhog.lndo.site
+  phpmyadmin:
+    - phpmyadmin.lndo.site
+
+services:
+  appserver:
+    type: php:8.1
+    build_as_root:
+      - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
+      - apt update -y -q && apt install -y libxslt-dev libsodium-dev cron curl wget
+      - docker-php-ext-install xsl sockets sodium
+    build:      
+    run_as_root:
+      - service cron start
+    run:
+    xdebug: true
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=appserver"
+        LANDO_HOST_IP: "host.docker.internal"
+        XDEBUG_CONFIG: "remote_enable=1 remote_host=host.docker.internal"
+
+  database:
+    portforward: 37013
+    creds:
+      user: magento
+      password: magento
+      database: magento
+
+  phpmyadmin:
+    type: phpmyadmin
+    portforward: true
+    hosts:
+      - database
+
+  elasticsearch:
+    type: elasticsearch:7.17.18
+    portforward: 9200
+    mem: 1025m
+    overrides:
+      environment:
+        - discovery.type=single-node
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  
+  redis:
+    type: redis
+    persist: false
+    portforward: 6379
+
+  mailhog:
+    type: mailhog
+    portforward: 1025
+    hogfrom:
+      - appserver
+
+  node:
+    type: node:19
+    ssl: false
+    globals:
+      grunt-cli: latest
+
+tooling:
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for nginx.
+    cmd: rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && docker-php-ext-enable xdebug && pkill -o -USR2 php-fpm && echo "Xdebug enabled"
+    user: root
+
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for nginx.
+    cmd: rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm && echo "Xdebug disabled"
+    user: root
+
+  console:
+    service: appserver
+    description: Run magento console commands
+    cmd: /app/www/bin/magento
+
+  npm:
+    service: node
+
+  node:
+    service: node
+
+  grunt:
+    service: node
+
