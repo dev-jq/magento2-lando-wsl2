@@ -1,16 +1,15 @@
-Local developement environment for Magento 2 based on Lando and WSL2. </br>
-Project is based on this **[article](https://www.liip.ch/en/blog/setup-drupal-and-lando-with-wsl2-on-windows)**.
+Local developement environment for Magento 2 based on Lando and WSL2 (Windows 10). </br>
 
 ## Requirements
 
 * [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-* [Ubuntu](https://www.microsoft.com/pl-pl/p/ubuntu/9nblggh4msv6)
+* [Debian](https://apps.microsoft.com/detail/9msvkqc78pk6) or [Ubuntu](https://www.microsoft.com/pl-pl/p/ubuntu/9nblggh4msv6)
 * [Docker](https://www.docker.com/products/docker-desktop)
 * [Lando](https://docs.lando.dev/)
 
 Here is **[article](https://www.liip.ch/en/blog/setup-drupal-and-lando-with-wsl2-on-windows)** how to setup Lando inside WSL2 Ubuntu.
 
-## Magento 2 installation
+## Magento 2.4.6 installation
 
 Write your public and private access keys from Magento Marketplace into *config/env* file and state if you need Magento Sample Data by setting DEPLOY_SAMPLE_DATA to true or false.
 
@@ -19,7 +18,7 @@ After installation store will be available at *magento.lndo.site* and admin pane
 name: admin</br>
 password: admin123</br>
 
-To install Magento 2 run *install.sh* script
+To install clean Magento 2.4.6 instance run *install.sh* script
 
 ```bash
 $ bash ./install.sh
@@ -29,9 +28,6 @@ Database cridentials:</br>
 user: magento</br>
 password: magento</br>
 database: magento
-
-Database internal (inside local env) connection: database:3306</br>
-Database external (outside local env) connection: localhost:37013
 
 For magento console commands use:
 ```bash
