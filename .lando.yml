@@ -2,7 +2,7 @@ name: magento246 #change it, name = project URL
 recipe: lemp
 config:
   webroot: www
-  php: '8.1'
+  php: '8.2'
   #database: mariadb:10.4
   database: mysql:8.0.29
   xdebug: 'false'
@@ -19,7 +19,7 @@ proxy:
 
 services:
   appserver:
-    type: php:8.1
+    type: php:8.2
     build_as_root:
       - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
       - apt update -y -q && apt install -y libxslt-dev libsodium-dev cron curl wget
