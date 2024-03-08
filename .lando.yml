@@ -87,9 +87,9 @@ tooling:
     cmd: rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm && echo "Xdebug disabled"
     user: root
 
-  console:
+  bin/magento:
     service: appserver
-    description: Run magento console commands
+    description: Magento 2 console commands
     cmd: /app/www/bin/magento
 
   npm:
@@ -101,3 +101,5 @@ tooling:
   grunt:
     service: node
 
+  gulp:
+    service: node
