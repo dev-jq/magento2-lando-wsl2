@@ -28,14 +28,14 @@ PhpMyAdmin will be available at *http://phpmyadmin.lndo.site*</br>
 user: magento</br>
 password: magento</br>
 
-For magento console commands use:
+For Magento 2 console commands use:
 ```bash
-$ lando console <command>
+$ lando bin/magento <command>
 ```
 
 for example:
 ```bash
-$ lando console cache:flush
+$ lando bin/magento cache:flush
 ```
 
 ## Commands
@@ -50,11 +50,6 @@ $ lando start
 
 ```bash
 $ lando stop
-```
-
-* Magento console command
-```bash
-$ lando console <command>
 ```
 
 * Rebuild lando app
@@ -93,13 +88,13 @@ $ lando ssh
 $ lando ssh -c <command>
 ```
 
-* Enable xdebug
+* Enable Xdebug
 
 ```bash
 $ lando xdebug-on
 ```
 
-* Disable xdebug
+* Disable Xdebug
 
 ```bash
 $ lando xdebug-off
@@ -121,4 +116,10 @@ lando npm <command>
 
 ```bash
 lando grunt <command>
+```
+
+* Gulp command
+
+```bash
+lando gulp <command>
 ```
