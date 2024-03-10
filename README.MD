@@ -1,13 +1,81 @@
-Local developement environment for Magento 2 based on Lando and WSL2 (Windows 10). </br>
+# Local developement environment for Magento 2 based on Lando and WSL2 (Windows 10)
 
 ## Requirements
 
 * [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-* [Debian](https://apps.microsoft.com/detail/9msvkqc78pk6) or [Ubuntu](https://www.microsoft.com/pl-pl/p/ubuntu/9nblggh4msv6)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
+* [Debian](https://apps.microsoft.com/detail/9msvkqc78pk6) or [Ubuntu](https://www.microsoft.com/pl-pl/p/ubuntu/9nblggh4msv6)
 * [Lando](https://docs.lando.dev/)
 
-Here is **[article](https://www.liip.ch/en/blog/setup-drupal-and-lando-with-wsl2-on-windows)** how to setup Lando inside WSL2 Ubuntu.
+## Setup Lando - step by step
+Here you will find the **[article](https://www.liip.ch/en/blog/setup-drupal-and-lando-with-wsl2-on-windows)** on which this repo is based:
+
+### 1. Install WSL 2 on Windows 10
+Follow the **[official documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10)** to install and enable WSL 2.
+
+### 2. Install Linux (Ubuntu or Debian) from the Microsoft Store
+
+Then run it and create a **Non-Root User** (eg. 'jan'):
+
+```
+sudo adduser jan
+sudo usermod -aG sudo jan
+su -  jan
+```
+
+Set as default user on Linux start:
+
+``
+sudo nano /etc/wsl.conf
+``
+
+Create (if not exist) or edit this file:
+
+```
+[user]
+default=jan
+```
+
+And save it.
+
+### 3. Install Docker Desktop .exe on Windows
+**https://docs.docker.com/desktop/install/windows-install/**
+
+### 4. Install Lando inside your Linux distro (Ubuntu or Debian)
+``
+sudo apt install wget
+``
+
+Get url versions from **[github.com/lando/lando/releases](https://github.com/lando/lando/releases)**:
+
+``
+wget https://github.com/lando/lando/releases/download/v3.20.8/lando-x64-v3.20.8.deb
+``
+
+``
+sudo dpkg --ignore-depends=docker-ce --install lando-x64-v3.20.8.deb
+``
+
+#### After installing lando this way, you may need to edit the ``/var/lib/dpkg/status`` file:
+
+``
+sudo nano /var/lib/dpkg/status
+``
+
+Search (**ctrl+w**) for **Lando** and remove from dependencies: ``docker-ce``
+
+then save: **ctrl+o**
+
+and exit: **ctrl+x**
+
+### 5. Go to your Magento project and start Lando
+
+```
+cd ..
+cd projects/magento-2.4.6/lando
+lando start
+```
+
 
 ## Magento 2.4.6 installation
 
