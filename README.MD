@@ -7,7 +7,7 @@
 * [Debian](https://apps.microsoft.com/detail/9msvkqc78pk6) or [Ubuntu](https://www.microsoft.com/pl-pl/p/ubuntu/9nblggh4msv6)
 * [Lando](https://docs.lando.dev/)
 
-## Setup Lando - step by step
+## :point_right: Setup Lando - step by step
 Here you will find the **[article](https://www.liip.ch/en/blog/setup-drupal-and-lando-with-wsl2-on-windows)** on which this repo is based:
 
 ### 1. Install WSL 2 on Windows 10
@@ -77,7 +77,7 @@ lando start
 ```
 
 
-## Magento 2.4.6 installation
+## :point_right: Magento 2.4.6 installation
 
 Write your public and private access keys from Magento Marketplace into *config/env* file and state if you need Magento Sample Data by setting DEPLOY_SAMPLE_DATA to true or false.
 
@@ -106,7 +106,7 @@ for example:
 $ lando bin/magento cache:flush
 ```
 
-## Commands
+## :point_right: Commands
 
 * Start / build lando
 
