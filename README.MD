@@ -191,3 +191,8 @@ lando grunt <command>
 ```bash
 lando gulp <command>
 ```
+
+## :star: See also **Azkarra** - my Magento 2 theme **optimized for Core Web Vitals and PageSpeed score!**
+:point_right: More info nad DEMO: https://github.com/dev-jq/Azkarra-Magento2-Theme-for-Core-Web-Vitals-and-PageSpeed
+
+
