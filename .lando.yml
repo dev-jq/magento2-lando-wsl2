@@ -4,9 +4,9 @@ config:
   webroot: www
   php: '8.2'
   #database: mariadb:10.6
-  database: mysql:8.0.29
+  database: mysql:8.0.36
   xdebug: 'false'
-  composer_version: '2.1.7'
+  composer_version: '2.2.23'
   config:
     php: config/php.ini
     vhosts: config/nginx.conf
@@ -49,7 +49,7 @@ services:
       - database
 
   elasticsearch:
-    type: elasticsearch:7.17.18
+    type: elasticsearch:8.12.2
     portforward: 9200
     mem: 1025m
     overrides:
