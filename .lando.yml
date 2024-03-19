@@ -92,6 +92,11 @@ tooling:
     description: Magento 2 console commands
     cmd: /app/www/bin/magento
 
+  n98-magerun2:
+    service: appserver
+    description: netz98 magerun CLI tools for Magento 2
+    cmd: php vendor/bin/n98-magerun2  
+
   npm:
     service: node
 
