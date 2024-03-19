@@ -84,7 +84,7 @@ Write your public and private access keys from Magento Marketplace into *config/
 To install clean Magento 2.4.6 instance run *install.sh* script
 
 ```bash
-$ bash ./install.sh
+bash ./install.sh
 ```
 
 Magento 2 will be installed in the *www* directory.
@@ -98,12 +98,12 @@ password: magento</br>
 
 For Magento 2 console commands use:
 ```bash
-$ lando bin/magento <command>
+lando bin/magento <command>
 ```
 
 for example:
 ```bash
-$ lando bin/magento cache:flush
+lando bin/magento cache:flush
 ```
 
 ## :point_right: Commands
@@ -111,61 +111,61 @@ $ lando bin/magento cache:flush
 * Start / build lando
 
 ```bash
-$ lando start
+lando start
 ```
 
 * Stop lando
 
 ```bash
-$ lando stop
+lando stop
 ```
 
 * Rebuild lando app
 
 ```bash
-$ lando rebuild
+lando rebuild
 ```
 
 * Destroy app (containers, databse, NOT FILES!)
 
 ```bash
-$ lando destroy
+lando destroy
 ```
 
 * Import database (supports .sql and sql.gz files)
 
 ```bash
-$ lando db-import path/to/file.sql
+lando db-import path/to/file.sql
 ```
 
 * Export database
 
 ```bash
-$ lando db-export path/to/file.sql
+lando db-export path/to/file.sql
 ```
 
 * Connect to container's shell
 
 ```bash
-$ lando ssh
+lando ssh
 ```
 
 * Run command in container's shell (you have to be in docroot directory)
 
 ```bash
-$ lando ssh -c <command>
+lando ssh -c <command>
 ```
 
 * Enable Xdebug
 
 ```bash
-$ lando xdebug-on
+lando xdebug-on
 ```
 
 * Disable Xdebug
 
 ```bash
-$ lando xdebug-off
+lando xdebug-off
 ```
 
 * Node command
