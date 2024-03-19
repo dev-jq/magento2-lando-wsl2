@@ -35,6 +35,8 @@ if [ -z "$(ls -A $WORKDIR)" ]; then
   lando ssh -c "bin/magento deploy:mode:set developer"
   lando ssh -c "bin/magento cache:disable full_page layout block_html translate"
 
+  echo "Install MAGERUN CLI tools"
+  lando composer require n98/magerun2-dist
 
   if [ "$DEPLOY_SAMPLE_DATA" = true ]; then
     echo "Deploying sample data"
