@@ -192,6 +192,12 @@ lando grunt <command>
 lando gulp <command>
 ```
 
+* [n98-magerun2](https://github.com/netz98/n98-magerun2) command (after instalation via ``lando composer require n98/magerun2-dist``)
+
+```bash
+lando n98-magerun2 <command>
+```
+
 ## :star: See also **Azkarra** - my Magento 2 theme **optimized for Core Web Vitals and PageSpeed score!**
 :point_right: More info nad DEMO: https://github.com/dev-jq/Azkarra-Magento2-Theme-for-Core-Web-Vitals-and-PageSpeed
 
